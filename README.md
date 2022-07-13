@@ -1,4 +1,4 @@
 # MITRE ATT&CK
 
--[Tactics Enterprise](mitre.md)
+-[Tactics Enterprise](Mitre.md)
 
