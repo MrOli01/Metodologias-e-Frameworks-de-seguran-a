@@ -1,6 +1,13 @@
-###  Táticas Empresariais
+### MITRE ATT&CK
 
-**Descrição:** As táticas representam o “porquê” de uma técnica, seria o objetivo tático de um adversário, a razão para realizar uma ação.
+A MITRE dividiu o ATT&CK em diferentes matrizes: Enterprise, Mobile e PRE-ATT&CK. Cada uma dessas matrizes contém várias táticas e técnicas associadas ao seu tema.
+
+A matriz Enterprise é formada por técnicas e táticas que se aplicam aos sistemas Windows, Linux e/ou MacOS. A matriz Mobile contém táticas e técnicas que são aplicadas em dispositivos móveis. A PRE-ATT&CK contém táticas e técnicas relacionadas ao que os invasores fazem antes de tentarem explorar uma determinada rede ou sistema alvo.
+
+
+###  Táticas Empresariais.
+
+**Descrição:** As técnicas representam "como" um adversário atinge um objetivo tático realizando uma ação. Por exemplo, um adversário pode despejar credenciais para obter acesso credencial.
 
 ### TA0043: Reconhecimento
 
@@ -3194,7 +3201,7 @@ T1102 **Serviço Web:** Os adversários podem usar um serviço web externo exist
           
 **Exemplo de procedimento:** O APT32 usou o Dropbox, Amazon S3 e Google Drive para hospedar downloads maliciosos: O botão SIGN IN continha um hiperlink para uma página nas contas hostname.gservice[.] comentários. Esta página foi para baixo não retornou conteúdo interessante em nenhum dos testes da Volexity. A Volexity acredita que esta página provavelmente deve ser usada para credenciais de phishing. O aparecimento da sobreposição e da URL para os vários botões mostrados acima são gerados de acordo com os dados do navegador do visitante. Uma olhada mais de perto no componente de entrega de carga do JavaScript é mostrada abaixo. Ele mostra os URLs de download de malware hospedados no Dropbox para usuários do Windows e os links de phishing idênticos para visitantes android e iOS.
           
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/95362045/164081447-94a5722c-e91a-45e3-b48a-97e28fdd3fae.png)
           
 **REFERÊNCIA:** https://www.volexity.com/blog/2020/11/06/oceanlotus-extending-cyber-espionage-operations-through-fake-websites/ 
           
@@ -3216,5 +3223,280 @@ T1102 **Serviço Web:** Os adversários podem usar um serviço web externo exist
           
 **REFERÊNCIA:** https://www2.fireeye.com/rs/848-DID-242/images/rpt-apt29-hammertoss.pdf
           
+TA0010 **EXFILTRAÇÃO:**           
           
+O adversário está tentando roubar dados.
+
+A exfiltração consiste em técnicas que os adversários podem usar para roubar dados de sua rede. Uma vez coletados dados, os adversários geralmente os embalam para evitar detecção enquanto os removem. Isso pode incluir compressão e criptografia. As técnicas para obter dados de uma rede de destino normalmente incluem transferi-los sobre seu canal de comando e controle ou um canal alternativo e também podem incluir a colocação de limites de tamanho na transmissão.          
+
+T1020 **Exfiltração automatizada:**  Os adversários podem exfiltrar dados, como documentos sensíveis, através do uso de processamento automatizado após serem coletados durante a Coleta. Quando a exfiltração automatizada é usada, outras técnicas de exfiltração provavelmente se aplicam também para transferir as informações para fora da rede, como exfiltração sobre canal C2 e exfiltração sobre protocolo alternativo.
           
+ **Exemplo de procedimento:**  Ebury pode exfiltrar automaticamente credenciais SSH coletadas.  A quadrilha por trás da Operação Windigo usa sistemas infectados para roubar credenciais, redirecionar o tráfego da Web para conteúdo malicioso e enviar mensagens de spam, Esses servidores foram todos comprometidos com o backdoor Do Linux/Ebury OpenSSH. Esse número é significativo se você considerar que cada um desses sistemas tem acesso a largura de banda, armazenamento, poder de computação e memória significativas. Organizações conhecidas como cPanel e kernel.org estavam na lista de vítimas, embora agora tenham limpado seus sistemas.
+          
+**REFERÊNCIA:**  https://www.welivesecurity.com/2014/03/18/operation-windigo-the-vivisection-of-a-large-linux-server-side-credential-stealing-malware-campaign/         
+.001 **Duplicação de tráfego:**Os adversários podem aproveitar o espelhamento de tráfego para automatizar a exfiltração de dados sobre a infraestrutura de rede comprometida. O espelhamento de tráfego é um recurso nativo para alguns dispositivos de rede e usado para análise de rede e pode ser configurado para duplicar o tráfego e encaminhar para um ou mais destinos para análise por um analisador de rede ou outro dispositivo de monitoramento.
+          
+**Exemplo de procedimento:** Os adversários podem abusar do espelhamento de tráfego para espelhar ou redirecionar o tráfego de rede através de outras infraestruturas de rede que eles controlam. Modificações maliciosas nos dispositivos de rede para permitir o redirecionamento de tráfego podem ser possíveis através do ROMMONkit ou da Imagem do Sistema de Patches
+          
+**REFERÊNCIA:** https://www.cisa.gov/uscert/ncas/alerts/TA18-106A
+          
+T1030 **Limites de tamanho de transferência de dados:** Um adversário pode exfiltrar dados em pedaços de tamanho fixo em vez de arquivos inteiros ou limitar tamanhos de pacotes abaixo de certos limites. Essa abordagem pode ser usada para evitar disparar alertas de limiar de transferência de dados da rede.
+          
+ **Exemplo de procedimento:**  Carbanak exfiltra dados em pedaços comprimidos se uma mensagem for maior que 4096 bytes:  A Figura 6 descreve a estrutura do protocolo binário habitual do malware. Se uma mensagem for maior que 150 bytes, ela é compactada com um algoritmo não identificado. Se uma mensagem for maior que 4096 bytes, ela é dividida em pedaços comprimidos. Este protocolo sofreu várias mudanças ao longo dos anos, cada versão baseando-se na versão anterior de alguma forma. Essas mudanças provavelmente foram introduzidas para tornar as assinaturas de rede existentes ineficazes e para dificultar a criação de assinaturas.
+
+ ![image](https://user-images.githubusercontent.com/95362045/165091819-869d1e53-6c91-4f87-9bd2-f74d7717a07b.png)
+
+**REFERÊNCIA:**  https://www.mandiant.com/resources/behind-the-carbanak-backdoor
+          
+.001 **Limites de tamanho de transferência de dados:** Um adversário pode exfiltrar dados em pedaços de tamanho fixo em vez de arquivos inteiros ou limitar tamanhos de pacotes abaixo de certos limites. Essa abordagem pode ser usada para evitar disparar alertas de limiar de transferência de dados da rede.
+          
+**Exemplo de procedimento:** O RDAT pode carregar um arquivo via resposta HTTP POST à divisão C2 em porções de 102.400 byte. O RDAT também pode baixar dados do C2 que é dividido em 81.920 porções byte
+          
+ **REFERÊNCIA:**  https://unit42.paloaltonetworks.com/oilrig-novel-c2-channel-steganography/ 
+          
+T1048 **Exfiltração sobre protocolo alternativo:**  Os adversários podem roubar dados exfiltrando-os sobre um protocolo diferente do canal de comando e controle existente. Os dados também podem ser enviados para um local de rede alternativo a partir do servidor principal de comando e controle.
+          
+.001 **Exfiltração sobre protocolo não-C2 criptografado simétrico:**  Os adversários podem roubar dados exfiltrando-os sobre um protocolo de rede simetricamente criptografado que não o do canal de comando e controle existente. Os dados também podem ser enviados para um local de rede alternativo a partir do servidor principal de comando e controle. Algoritmos de criptografia simétricos são aqueles que usam chaves/segredos compartilhados ou as mesmas chaves/segredos em cada extremidade do canal. Isso requer uma troca ou acordo/posse pré-arranjado do valor usado para criptografar e descriptografar dados.         
+
+.002 **Exfiltração sobre protocolo não-C2 criptografado assimétrico:** Os adversários podem roubar dados exfiltrando-os sobre um protocolo de rede assimétricamente criptografado que não o do canal de comando e controle existente. Os dados também podem ser enviados para um local de rede alternativo a partir do servidor principal de comando e controle.  Protocolos de rede que usam criptografia assimétrica (como HTTPS/TLS/SSL) geralmente utilizam criptografia simétrica uma vez que as chaves são trocadas. Os adversários podem optar por usar esses mecanismos criptografados que são cozidos em um protocolo.
+          
+**Exemplo de procedimento:** O APT28 exfiltizou arquivos de dados coletados anteriormente encenados no servidor OWA de um alvo via HTTPS.  
+          
+**REFERÊNCIA:** https://media.defense.gov/2021/Jul/01/2002753896/-1/-1/1/CSA_GRU_GLOBAL_BRUTE_FORCE_CAMPAIGN_UOO158036-21.PDF 
+          
+.003 **Exfiltração sobre protocolo não-C2 não criptografado/ofuscado:** Os adversários podem roubar dados exfiltrando-os sobre um protocolo de rede não criptografado que não seja o do canal de comando e controle existente. Os dados também podem ser enviados para um local de rede alternativo a partir do servidor principal de comando e controle.
+          
+**Exemplo de procedimento:** Algumas variantes do Brave Prince usaram o serviço de e-mail Daum da Coreia do Sul para exfiltrar informações, e variantes posteriores postaram os dados em um servidor web através de um comando de postagem HTTP.
+          
+**REFERÊNCIA:** https://www.mcafee.com/blogs/other-blogs/mcafee-labs/gold-dragon-widens-olympics-malware-attacks-gains-permanent-presence-on-victims-systems/        
+
+T1041 **Exfiltração sobre canal C2:** Os asversários podem roubar dados exfiltrando-os sobre um canal de comando e controle existente. Os dados roubados são codificados no canal de comunicação normal usando o mesmo protocolo que as comunicações de comando e controle. 
+          
+**Exemplo de procedimentos:** O AppleJeus exfiltra informações coletadas do host para um servidor C2:   Inicialmente, os atores do HIDDEN COBRA usavam sites que pareciam hospedar plataformas legítimas de negociação de criptomoedas para infectar vítimas com o AppleJeus; no entanto, esses atores agora também estão usando outros vetores iniciais de infecção, como phishing, redes sociais e técnicas de engenharia social, para fazer com que os usuários baixem o malware.
+          
+**REFERÊNCIA:** https://www.cisa.gov/uscert/ncas/alerts/aa21-048a          
+          
+T1011 **Exfiltração sobre outro meio de rede:** Os adversários podem tentar exfiltrar dados em um meio de rede diferente do canal de comando e controle. Se a rede de comando e controle for uma conexão com a Internet com fio, a exfiltração pode ocorrer, por exemplo, por meio de uma conexão WiFi, modem, conexão de dados celulares, Bluetooth ou outro canal de radiofrequência (RF).
+          
+**Exemplo de procedimento:** Os adversários podem optar por fazer isso se tiverem acesso ou proximidade suficientes, e a conexão pode não ser protegida ou defendida, bem como o canal principal conectado à Internet porque não é roteado através da mesma rede corporativa.
+
+.001 **Exfiltração sobre Bluetooth:**  Os adversários podem tentar exfiltrar dados via Bluetooth em vez do canal de comando e controle. Se a rede de comando e controle for uma conexão com a Internet com fio, um adversário pode optar por exfiltrar dados usando um canal de comunicação Bluetooth.         
+          
+**Exemplo de procedimento:** O Flame possui um módulo chamado BeetleJuice que contém funcionalidade Bluetooth que pode ser usada de diferentes maneiras, incluindo a transmissão de informações codificadas do sistema infectado pelo protocolo Bluetooth, atuando como um farol Bluetooth e identificando outros dispositivos Bluetooth nas proximidades:   A funcionalidade Bluetooth no Flamer é codificada em um módulo chamado "BeetleJuice". Este módulo é acionado de acordo com os valores de configuração definidos pelo invasor. Quando acionado, realiza duas ações primárias: 
+          
+1 - O primeiro é digitalizar todos os dispositivos Bluetooth ao alcance. Quando um dispositivo é encontrado, seu status é consultado e os detalhes do dispositivo gravado — incluindo seu ID — presumivelmente devem ser carregados no invasor em algum momento.
+ 
+2 - A segunda ação é configurar-se como um farol Bluetooth. Isso significa que um computador comprometido por W32. Flamer aparecerá quando qualquer outro dispositivo Bluetooth escaneia a área local. E há mais. Além de habilitar um farol Bluetooth, o Flamer codifica detalhes sobre o computador infectado (ver Figura 1) e armazena esses detalhes em um campo especial de 'descrição'. Quando qualquer outro dispositivo for digitaliza dispositivos habilitados para Bluetooth, este campo de descrição será exibido:
+          
+**Exemplo de procedimento:** https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=aa61045b-886c-4a03-945c-d7993c5d39dd&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments
+          
+T1052 **Exfiltração sobre meio físico:** Os adversários podem tentar exfiltrar dados através de um meio físico, como uma unidade removível. Em certas circunstâncias, como um compromisso de rede com falhas no ar, a exfiltração pode ocorrer através de um meio físico ou dispositivo introduzido por um usuário. Essa mídia pode ser um disco rígido externo, unidade USB, telefone celular, mp3 player ou outro dispositivo de armazenamento e processamento removível. O meio físico ou dispositivo poderia ser usado como ponto final de exfiltração ou para saltar entre sistemas desconectados de outra forma.
+          
+.001 **Exfiltração sobre USB:** Os adversários podem tentar exfiltrar dados sobre um dispositivo físico conectado a USB. Em certas circunstâncias, como um compromisso de rede com falhas de ar, a exfiltração pode ocorrer através de um dispositivo USB introduzido por um usuário. O dispositivo USB pode ser usado como o ponto final de exfiltração ou para saltar entre sistemas desconectados de outra forma.
+          
+**Exemplo de procedimento:** Os exfiltradores do USBStealer coletaram arquivos através de mídia removível de vítimas com espaço no ar: Este é o cenário que é explorado pelo Win32/USBStealer para alcançar redes com escancarados pelo ar. A imagem a seguir apresenta uma visão geral de alto nível desta estratégia no caso simples de apenas dois computadores. O computador A está conectado à Internet e está inicialmente infectado com o porta-gotas Win32/USBStealer, enquanto o Computador B está fisicamente isolado e fica infectado com Win32/USBStealer durante o ataque.
+          
+![image](https://user-images.githubusercontent.com/95362045/165125558-a7ef2c8b-9a22-4d43-a12b-14a0c6a5aa55.png)
+          
+**REFERÊNCIA:** https://www.welivesecurity.com/2014/11/11/sednit-espionage-group-attacking-air-gapped-networks/
+          
+T1567 **Exfiltração sobre serviço web:** Os adversários podem usar um serviço web externo existente e legítimo para exfiltrar dados em vez de seu canal de comando e controle principal. Serviços populares da Web que atuam como um mecanismo de exfiltração podem dar uma quantidade significativa de cobertura devido à probabilidade de que os hosts dentro de uma rede já estejam se comunicando com eles antes do compromisso.
+          
+**Exemplo de procedimento:** O APT28 pode exfiltrar dados sobre o Google Drive: A partir de agosto de 2020, Pawn Storm enviou vários e-mails de phishing com um anexo RAR malicioso, dois arquivos RAR quase idênticos que continham um arquivo chamado info.exe. Ambas as versões dos arquivos .exe informações são arquivos auto-extrativantes (SFX) que extraem e executam dois arquivos: descriptografar.exe e gdrive.exe.
+          
+**REFERÊNCIA:** https://www.trendmicro.com/en_us/research/20/l/pawn-storm-lack-of-sophistication-as-a-strategy.html          
+          
+.001 **Exfiltração para Repositório de Código:** Os adversários podem exfiltrar dados para um repositório de código, em vez de sobre seu canal de comando e controle primário. Os repositórios de código são frequentemente acessíveis através de uma API (ex: https://api.github.com). O acesso a essas APIs muitas vezes são sobre HTTPS, o que dá ao adversário um nível adicional de proteção. A exfiltração em um repositório de código também pode fornecer uma quantidade significativa de cobertura ao adversário se for um serviço popular já usado por hosts dentro da rede.
+
+.002 **Exfiltração para Armazenamento em Nuvem:** Os adversários podem exfiltrar dados para um serviço de armazenamento em nuvem, em vez de sobre seu canal de comando e controle principal. Os serviços de armazenamento em nuvem permitem o armazenamento, edição e recuperação de dados de um servidor remoto de armazenamento em nuvem pela Internet.       
+          
+**Exemplo de procedimento:** Hammertoss exfiltra dados enviando-os para contas criadas pelos atores em provedores de armazenamento em nuvem da Web para que os adversários recuperem mais tarde
+          
+**Exemplo de procedimento:** https://www2.fireeye.com/rs/848-DID-242/images/rpt-apt29-hammertoss.pdf          
+          
+T1029 **Transferência agendada:** Os adversários podem agendar a exfiltração dos dados para ser realizada apenas em determinados horários do dia ou em determinados intervalos. Isso pode ser feito para misturar padrões de tráfego com atividade normal ou disponibilidade. 
+          
+**Exemplo de procedimento:**  O PLATINUM usa vários backdoors desenvolvidos sob medida para se comunicar com computadores infectados, A primeira variante, Win32/Dipsind.A!dha, é um aplicativo leve que fornece acesso backdoor a invasores remotos. Ele pode ser personalizado para cada vítima para garantir que permaneça indetectável nas redes de destino. Ele suporta um pequeno conjunto de instruções que permitem que o invasor execute funções básicas, como upload ou download de arquivos e geração de shells remotos. Os parâmetros configuráveis incluem instruções sobre onde o Dipsind deve instalar uma cópia do cmd.exe para gerar um shell remoto, dependendo dos privilégios do usuário, das horas durante as quais o backdoor deve funcionar e informações de exfiltração. Esse recurso permite que o backdoor 
+limite suas atividades ao horário normal de trabalho, tornando mais difícil distinguir suas comunicações do tráfego de rede normal.
+          
+**REFERÊNCIA:** https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf
+          
+T1537 **Transferir dados para a conta em nuvem:** Os adversários podem exfiltrar dados transferindo os dados, incluindo backups de ambientes em nuvem, para outra conta em nuvem que eles controlam no mesmo serviço para evitar transferências/downloads de arquivos típicos e detecção de exfiltração baseada em rede.
+          
+TA0040 **Impacto:** 
+          
+O adversário está tentando manipular, interromper ou destruir seus sistemas e dados. O impacto consiste em técnicas que os adversários usam para interromper a disponibilidade ou comprometer a integridade manipulando processos comerciais e operacionais. Técnicas utilizadas para o impacto podem incluir destruição ou adulteração de dados. Em alguns casos, os processos de negócios podem parecer bons, mas podem ter sido alterados para beneficiar os objetivos dos adversários. Essas técnicas podem ser usadas por adversários para seguir em frente em seu objetivo final ou para fornecer cobertura para uma quebra de sigilo.          
+          
+T1531 **Remoção de acesso à conta:** Os adversários podem interromper a disponibilidade de recursos do sistema e da rede, inibindo o acesso às contas utilizadas por usuários legítimos. As contas podem ser excluídas, bloqueadas ou manipuladas (ex: credenciais alteradas) para remover o acesso às contas. Os adversários também podem posteriormente fazer logoff e/ou executar um desligamento/reinicialização do sistema para definir alterações maliciosas no lugar.          
+          
+**Exemplo de procedimento:** O MegaCortex alterou as senhas da conta de usuário e retirou os usuários do sistema: Assim como qualquer malware, os operadores do MegaCortex não querem vê-lo detectado muito cedo e interrompido antes que a criptografia de arquivos possa começar. Para isso, o malware prepara o terreno encontrando e desligando uma lista de programas de segurança e processos relacionados.
+
+O MegaCortex v1 foi executado manualmente por atores de ameaças usando um arquivo de lote separado para matar processos de segurança e parar/desativar serviços relacionados a cópias de segurança, backup e sombra. Esse mesmo arquivo de lote foi posteriormente usado para executar o binário MegaCortex com uma tecla Base64 como argumento de linha de comando.
+          
+**REFERÊNCIA:** https://securityintelligence.com/posts/from-mega-to-giga-cross-version-comparison-of-top-megacortex-modifications/
+          
+T1485 **Destruição de dados:** Os adversários podem destruir dados e arquivos em sistemas específicos ou em grande número em uma rede para interromper a disponibilidade de sistemas, serviços e recursos de rede. É provável que a destruição de dados torne os dados armazenados irrecuperáveis por técnicas forenses por meio de arquivos de substituição ou dados em unidades locais e remotas.
+          
+**Exemplo de procedimento:**  O Diavol pode excluir arquivos especificados de um sistema direcionado: ransomware derruba uma nota de resgate em um formato de texto em cada pasta que ele passa, como pode ser visto na figura 1.         
+          
+![image](https://user-images.githubusercontent.com/95362045/165140029-48346c86-b1c3-4785-a2d2-f8c5c4ca9dcc.png) 
+          
+locker.exe é um executável de 32 bits compilado com o Microsoft Visual C/C++ Compiler. O timestamp 2021-04-30 15:58:15 no arquivo suporta a hipótese de que este ransomware é relativamente novo.
+
+Após a execução, Diavol começa verificando os argumentos da linha de comando:
+
+"-p": caminho para um arquivo com uma lista de caminhos para digitalizar primeiro para arquivos.
+"-log": caminho para um arquivo de registro.
+"-m": modo: net ou local.
+net - criptografar apenas ações de rede.
+local - criptografar somente unidades locais e ignorar os compartilhamentos de rede.
+"-h": caminho para um arquivo que contém hosts específicos (nomes e IPs) para enumerar para ações.
+"-s": endereço IP para o que a mensagem de registro inicial será enviada. Substitui o endereço codificado.          
+
+**REFERÊNCIA:** https://www.fortinet.com/blog/threat-research/diavol-new-ransomware-used-by-wizard-spider 
+          
+T1486 **Dados criptografados para impacto:** Os adversários podem criptografar dados em sistemas de destino ou em um grande número de sistemas em uma rede para interromper a disponibilidade de recursos de sistema e rede. Eles podem tentar tornar os dados armazenados inacessíveis criptografando arquivos ou dados em unidades locais e remotas e retendo acesso a uma chave de descriptografia.
+          
+**Exemplo de procedimento:**  No caso do ransomware, é típico que arquivos comuns de usuários como documentos do Office, PDFs, imagens, vídeos, áudio, texto e arquivos de código-fonte sejam criptografados (e muitas vezes renomeados e/ou marcados com marcadores de arquivo específicos). Os adversários podem precisar primeiro empregar outros comportamentos, como modificação de permissões de arquivo e diretório ou desligamento/reinicialização do sistema, a fim de desbloquear e/ou obter acesso para manipular esses arquivos. Em alguns casos, os adversários podem criptografar arquivos críticos do sistema, partições de disco e o MBR. 
+          
+**Exemplo de procedimento:** https://www.cisa.gov/uscert/ncas/alerts/TA17-181A
+          
+T1565 **Manipulação de dados:** Os adversários podem inserir, excluir ou manipular dados para influenciar resultados externos ou ocultar atividades, ameaçando assim a integridade dos dados. Ao manipular dados, os adversários podem tentar afetar um processo de negócios, compreensão organizacional ou tomada de decisão
+          
+.001 **Manipulação de dados armazenada:** Os adversários podem inserir, excluir ou manipular dados em repouso, a fim de influenciar resultados externos ou ocultar atividades, ameaçando assim a integridade dos dados.
+          
+**Exemplo de procedimento:** O SUNSPOT criou uma cópia do arquivo de origem do software SolarWinds Orion com uma extensão para fazer backup do conteúdo original, escreveu SUNBURST usando o mesmo nome de arquivo, mas com uma extensão, e depois moveu a SUNBURST usando o nome de arquivo original com uma extensão para que pudesse ser compilado dentro do software Orion..bk.tmpMoveFileEx.cs
+          
+**REFERÊNCIA:**  https://www.crowdstrike.com/blog/sunspot-malware-technical-analysis/   
+          
+.002 **Manipulação de dados transmitida:** Os adversários podem alterar os dados a caminho do armazenamento ou de outros sistemas, a fim de manipular resultados externos ou ocultar atividades, ameaçando assim a integridade dos dados. Ao manipular dados transmitidos, os adversários podem tentar afetar um processo de negócios, compreensão organizacional e tomada de decisão.
+          
+**Exemplo de procedimento:** Melcoz pode monitorar a área de transferência para endereços de criptomoedas e alterar o endereço pretendido para um controlado pelo adversário:  Para executar os módulos adicionais, o malware usa a técnica de ocoamento de processos para ocultar a carga maliciosa dentro de um processo de lista permitida, como svchost.exe. As cargas são armazenadas criptografadas no sistema de arquivos e descriptografadas na memória à medida que são executadas.
+
+A carga final instalada no sistema monitorará as atividades do usuário, como sites abertos e aplicativos de execução e verificará se eles estão na lista de destinos. Quando um alvo é detectado, o módulo é executado, dando aos criminosos controle sobre transações bancárias.
+
+Este módulo permite que os criminosos realizem certas operações bancárias muito específicas, tais como:
+
+- Controle total sobre a navegação de página através do uso de um sistema semelhante ao VNC,
+- Toggling sobreposição de tela,
+- Solicitando tokens SMS,
+- Validação de código QR,
+- Solicitando transação
+
+O invasor pode essencialmente realizar quaisquer transações financeiras usando o computador da vítima, evitando sistemas antifraude que podem detectar transações bancárias iniciadas por máquinas suspeitas.
+          
+**REFERÊNCIA:** https://securelist.com/the-tetrade-brazilian-banking-malware/97779/ 
+          
+.003 **Manipulação de dados de tempo de execução:** Os adversários podem modificar sistemas para manipular os dados à medida que são acessados e exibidos a um usuário final, ameaçando assim a integridade dos dados.[1][2] Manipulando dados de tempo de execução, os adversários podem tentar afetar um processo de negócios, compreensão organizacional e tomada de decisão.
+          
+**Exemplo de procedimento:** Os adversários podem alterar binários de aplicativos usados para exibir dados para causar manipulações de tempo de execução. Os adversários também podem realizar a Associação de Arquivos Padrão de Alteração e mascarar-se para causar um efeito semelhante. O tipo de modificação e o impacto que terá dependem da aplicação e processo de destino, bem como dos objetivos e objetivos do adversário.
+          
+**REFERÊNCIA:** https://content.fireeye.com/apt/rpt-apt38
+          
+T1491 **Desfiguração:**  Os adversários podem modificar o conteúdo visual disponível interna ou externamente para uma rede corporativa, afetando assim a integridade do conteúdo original. As razões para desfiguração incluem entregar mensagens, intimidação ou reivindicar (possivelmente falso) crédito por uma intrusão.
+          
+.001 **Desfiguração Interna:**  Um adversário pode desfigurar sistemas internos para uma organização na tentativa de intimidar ou enganar os usuários, desacreditando assim a integridade dos sistemas. Isso pode levar a forma de modificações para sites internos ou diretamente para sistemas de usuário com a substituição do papel de parede da área de trabalho.
+          
+**Exemplo de procedimento:**  O meteoro pode alterar tanto o papel de parede da área de trabalho quanto a imagem da tela de bloqueio para uma imagem personalizada: O malware em seguida se propõe a evitar que a vítima pare a infecção em curso. Primeiro, a máquina é removida do domínio Active Directory usando WinAPI ou WMI. Isso torna mais difícil empurrar remotamente quaisquer ferramentas de remediação para as máquinas infectadas. Em seguida, o malware passa a corromper a configuração de inicialização do computador: nas versões do Windows antes do Windows 7, o malware substitui o inicialização c:\. arquivo ini; no Windows 7 ou acima, ele exclui as entradas BCD. Finalmente, o malware altera a senha dos usuários locais. Nos arquivos analisados, todas as senhas escolhidas pelo ator têm o mesmo padrão: , por exemplo ou .Aa153![random sequence]Aa153!rHrrdOvpCjAa153!IRro3d2JYm
+
+Quando tudo o acima for dito e feito, o usuário não recuperará o acesso à sua máquina facilmente. Nesta fase, o malware desativa o protetor de tela do Windows e altera tanto o papel de parede da área de trabalho quanto as imagens da tela de bloqueio para uma imagem personalizada. Estas são as duas imagens idênticas jpeg e bmp apresentando o logotipo das Ferrovias do Irã e a mensagem semelhante à exibida nas placas de plataforma de diferentes estações ferroviárias no Irã:
+          
+**REFERÊNCIA:** https://research.checkpoint.com/2021/indra-hackers-behind-recent-attacks-on-iran/
+          
+.002 **Desfiguração Externo:**  Um adversário pode desfigurar sistemas externos a uma organização na tentativa de fornecer mensagens, intimidar ou enganar uma organização ou usuários. O desfiguramento externo pode, em última análise, fazer com que os usuários desconfiem dos sistemas e questionem/desacreditem a integridade do sistema. Sites voltados externamente são uma vítima comum de desfiguração; muitas vezes alvo de grupos adversários e hacktivistas, a fim de empurrar uma mensagem política ou espalhar propaganda.
+          
+**Exemplo de procedimento:** A Equipe Sandworm desfigurou aproximadamente 15.000 sites pertencentes a organizações governamentais, não governamentais e do setor privado da Geórgia em 2019.
+          
+**REFERÊNCIA:** https://www.justice.gov/opa/press-release/file/1328521/download
+          
+T1561 **Limpador de disco:** Os adversários podem limpar ou corromper dados de disco bruto em sistemas específicos ou em grande número em uma rede para interromper a disponibilidade de recursos do sistema e da rede. Com o acesso direto à gravação de um disco, os adversários podem tentar substituir partes de dados de disco.
+          
+.001 **Wipe de conteúdo de disco:** Os adversários podem apagar o conteúdo de dispositivos de armazenamento em sistemas específicos ou em grande número em uma rede para interromper a disponibilidade para recursos de sistema e rede.Os adversários podem substituir parcial ou completamente o conteúdo de um dispositivo de armazenamento que torna os dados irrecuperáveis através da interface de armazenamento.
+          
+**Exemplo de procedimento:** O MegaCortex pode limpar dados excluídos de todas as unidades usando .cipher.exe
+          
+O MegaCortex v2 usa apenas um módulo, que é criptografado e incorporado no binário. O nome deste módulo é payload.dll e sua funcionalidade abrange o trabalho anteriormente realizado por dois módulos em v1:
+
+- Contém duas exportações de função DLL: start e ss2
+- Não caiu para o disco
+- Responsável por encerrar processos e parar/desativar serviços relacionados à segurança do ponto final
+- Responsável pela criptografia de arquivos
+- Responsável pela criação de vários segmentos de trabalhadores para criptografia
+- Responsável pela criação das notas de resgate
+- Não usa mais o processo rundll32.exe como carregador, mas em vez disso usa o binário MegaCortex como carregador DLL
+- Responsável por excluir cópias de sombra de volume usando vssadmin.exe e limpar dados excluídos de todas as unidades usando cifra.exe
+          
+**REFERÊNCIA:** https://securityintelligence.com/posts/from-mega-to-giga-cross-version-comparison-of-top-megacortex-modifications/
+          
+.002 **Limpeza da estrutura do disco:** Os adversários podem corromper ou limpar as estruturas de dados do disco em um disco rígido necessário para inicializar um sistema; visando sistemas críticos específicos ou em grande número em uma rede para interromper a disponibilidade de recursos de sistema e rede.
+          
+**Exemplo de procedimento:** O malware do Lazarus Group SHARPKNOT substitui e exclui o Master Boot Record (MBR) na máquina da vítima e possui malware de limpador MBR desde pelo menos 2009. 
+          
+**REFEÊNCIA:** https://www.cisa.gov/uscert/sites/default/files/publications/MAR-10135536.11.WHITE.pdf
+          
+T1499 **Negação de Serviço de Ponto Final:** Os adversários podem realizar ataques de Negação de Serviço (DoS) para degradar ou bloquear a disponibilidade de serviços aos usuários. O Endpoint DoS pode ser realizado esgotando os recursos do sistema em que esses serviços estão hospedados ou explorando o sistema para causar uma condição persistente de falha.
+          
+.001 **Inundação de exaustão do SO:** Os adversários podem lançar um ataque de negação de serviço (DoS) visando o sistema operacional (OS) de um ponto final. O SO de um sistema é responsável pelo gerenciamento dos recursos finitos, bem como para evitar que todo o sistema seja sobrecarregado por exigências excessivas sobre sua capacidade.
+          
+.002 **nundação de exaustão de serviço:** Os adversários podem direcionar os diferentes serviços de rede fornecidos pelos sistemas para realizar uma negação de serviço (DoS). Os adversários geralmente visam a disponibilidade de DNS e serviços web, no entanto outros também foram visados.
+          
+.003 **Inundação de exaustão de aplicação:** Os adversários podem direcionar recursos intensivos de recursos de aplicativos para causar uma negação de serviço (DoS), negando disponibilidade a esses aplicativos. Por exemplo, recursos específicos em aplicativos web podem ser altamente intensivos em recursos. Solicitações repetidas a esses recursos podem ser capazes de esgotar os recursos do sistema e negar acesso ao aplicativo ou ao próprio servidor.
+          
+.004 **Exploração de aplicativos ou sistemas:**   Os adversários podem explorar vulnerabilidades de software que podem causar a falha de um aplicativo ou sistema e negar disponibilidade aos usuários. Alguns sistemas podem reiniciar automaticamente aplicativos e serviços críticos quando ocorrem falhas, mas eles provavelmente podem ser re-explorados para causar uma condição persistente de negação de serviço (DoS).
+          
+T1495 **Corrupção de firmware:** Os adversários podem sobregravar ou corromper o conteúdo da memória flash do BIOS do sistema ou de outro firmware em dispositivos conectados a um sistema, a fim de torná-los inoperáveis ou incapazes de inicializar, negando assim a disponibilidade para usar os dispositivos e/ou o sistema.
+          
+**Exemplo de procedimento:** O Bad Rabbit usou um executável que instala um bootloader modificado para evitar o inicialização normal: De acordo com nossa telemetria, o ransomware é espalhado através de um ataque drive-by.
+
+O caixa de vítimas do ransomware é distribuído a partir de hxxp://1dnscontrol[.] com/flash_install.php   
+          
+![image](https://user-images.githubusercontent.com/95362045/165140106-4e63fd44-e6f5-480b-bb7a-4610c5869453.png)
+          
+as vítimas são redirecionadas para este recurso da Web de malware de sites de notícias legítimos.
+
+O arquivo baixado chamado install_flash_player.exe precisa ser lançado manualmente pela vítima. Para operar corretamente, precisa de privilégios administrativos elevados que tenta obter usando o prompt UAC padrão. Se iniciado, ele salvará o DLL malicioso como C:Windowsinfpub.dat e o iniciará usando rundll32.
+          
+![image](https://user-images.githubusercontent.com/95362045/165143449-67145d9f-d1d9-4e86-a3b4-6f7721355c7c.png)
+          
+**REFERÊNCIA:** https://securelist.com/bad-rabbit-ransomware/82851/          
+          
+T1490 **Inibir a recuperação do sistema:** Os adversários podem excluir ou remover dados incorporados do sistema operacional e desativar serviços projetados para ajudar na recuperação de um sistema corrompido para evitar a recuperação. Isso pode negar acesso a backups disponíveis e opções de recuperação.
+          
+**Exemplo de procedimento:** O Conficker redefine os pontos de restauração do sistema e exclui arquivos de backup:  O principal impacto da Conficker neste momento é sua capacidade de encerrar, desativar, reconfigurar ou evitar o sistema operacional nativo e serviços de segurança de terceiros (Porras, Saidi e Yegneswaran, abril de 2009). O Conficker desativa os serviços de segurança dos sistemas Windows, bem como firewalls de terceiros e produtos antivírus, deixando os sistemas em um estado vulnerável que podem levar a mais infecções e infiltrações. Além disso, o Conficker bloqueia o acesso a sites relacionados à segurança, como symantec ou McAfee, impedindo assim que os usuários baixem ferramentas para remover a infecção.
+          
+**REFERÊNCIA:** https://web.archive.org/web/20200125132645/https://www.sans.org/security-resources/malwarefaq/conficker-worm
+          
+T1498 **Negação de Serviço de Rede:**  Os adversários podem realizar ataques de Negação de Serviço (DoS) para degradar ou bloquear a disponibilidade de recursos direcionados aos usuários. O Network DoS pode ser realizado esgotando os serviços de largura de banda da rede. Os recursos de exemplo incluem sites específicos, serviços de e-mail, DNS e aplicativos baseados na Web. Adversários têm sido observados conduzindo ataques de Rede DoS para fins políticos.
+          
+**Exemplo de procedimento:** **O Lúcifer** pode executar ataques de negação de serviço TCP, UDP e HTTP (DoS): Lúcifer é muito poderoso em suas capacidades. Não só é capaz de soltar XMRig para criptojacking Monero, ele também é capaz de operação de comando e controle (C2) e auto-propagação através da exploração de múltiplas vulnerabilidades e credenciais de força bruta. Além disso, ele cai e executa EternalBlue, EternalRomance e DoublePulsar backdoor contra alvos vulneráveis para infecções intranet.
+          
+**REFERÊNCIA:** https://unit42.paloaltonetworks.com/lucifer-new-cryptojacking-and-ddos-hybrid-malware/
+          
+.001 **Inundação de rede direta:** Os adversários podem tentar causar uma negação de serviço (DoS) enviando diretamente um alto volume de tráfego de rede para um alvo. Este ataque DoS também pode reduzir a disponibilidade e a funcionalidade dos sistemas e da rede direcionados.
+          
+.002 **Amplificação da Reflexão:**  Os adversários podem tentar causar uma negação de serviço (DoS) refletindo um alto volume de tráfego de rede para um alvo. Esse tipo de Rede DoS se aproveita de um intermediário de servidor de terceiros que hospeda e responderá a um determinado endereço IP de origem falsificada.
+          
+ T1496 **Sequestro de recursos:** Os adversários podem aproveitar os recursos dos sistemas cooptados para resolver problemas intensivos de recursos, que podem afetar a disponibilidade de serviços do sistema e/ou hospedados. Os adversários também podem usar malware que aproveita a largura de banda de rede de um sistema como parte de uma botnet, a fim de facilitar campanhas de negação de serviço de rede e/ou para semear torrents maliciosos
+          
+**Exemplo de procedimento:** Hildegard usou xmrig para minerar criptomoedas: A carga principal distribuída por Blue Mockingbird é uma versão de XMRIG embalado como um DLL. O XMRIG é uma ferramenta popular de mineração monero de código aberto que os adversários podem facilmente compilar em ferramentas personalizadas. Durante os incidentes, notamos três usos distintos.
+
+O primeiro uso foi a execução com explicitamente chamando a exportação DLL rundll32.exefackaaxv (T1218.011: Rundll32). Esta exportação parece única para as cargas deste ator e não parece acontecer em outros lugares na natureza:
+
+rundll32.exe dialogex.dll,fackaaxv
+O próximo uso foi a execução usando a opção de linha de comando (regsvr32.exe/sT1218.010: Regsvr32). O fornecimento do switch executa a exportação exposta pela carga DLL. Esta exportação finalmente passou o controle da execução para a função que exportou:/sDllRegisterServerfackaax
+
+regsvr32.exe /s dialogex.dll
+O caminho final de execução foi com a carga configurada como DLL de serviço do Windows (T1569.002: Execução de Serviços). Uma vez configurada, a execução do serviço invocou a exportação, que novamente passou o controle para .ServiceMainfackaaxv
+          
+**REFERÊNCIA:** https://redcanary.com/blog/blue-mockingbird-cryptominer/ 
+          
+T1489 **Parada de serviço:** Os adversários podem parar ou desativar serviços em um sistema para tornar esses serviços indisponíveis para usuários legítimos. Parar serviços ou processos críticos pode inibir ou parar a resposta a um incidente ou ajudar nos objetivos gerais do adversário para causar danos ao meio ambiente.            
+**Exemplo de procedimento:** HermeticWiper tem a capacidade de parar o serviço Volume Shadow Copy:  HermeticWiper é um novo limpador de dados semelhante a ransomware que foi implantado a partir de 23 de fevereiro de 2022. Com base em vários relatórios de inteligência, o wiper-ware é precedido por explorações que ajudam na implantação de malware ou em vários ataques distribuídos de negação de serviço para desligar os serviços de proteção.  ste limpador-ware tem seu nome porque os atacantes usaram um certificado de assinatura de código emitido para "Hermetica Digital Ltd." Isso remonta a uma pequena empresa de design de videogames sediada em Chipre sem ligações com a Rússia que afirma que nunca solicitou um certificado digital, apontando para um possível roubo de identidade. Os sistemas operacionais usam a assinatura de códigos como uma verificação inicial no software, por isso pode ter sido projetado para ajudar o programa desonesto a evitar proteções antivírus.
+          
+**REFERÊNCIA:** https://blog.qualys.com/vulnerabilities-threat-research/2022/03/01/ukrainian-targets-hit-by-hermeticwiper-new-datawiper-malware
+          
+T1529 **Desligamento/reinicialização do sistema:** Os adversários podem desligar/reiniciar sistemas para interromper o acesso ou ajudar na destruição desses sistemas. Os sistemas operacionais podem conter comandos para iniciar um desligamento/reinicialização de uma máquina ou dispositivo de rede.           
+  
+**Exemplo de procedimento:** WhisperGate pode desligar um host comprometido através da execução com a bandeira.ExitWindowsExEXW_SHUTDOWN 
+ 
+**Exemplo de procedimento:** https://blog.talosintelligence.com/2022/01/ukraine-campaign-delivers-defacement.html         
